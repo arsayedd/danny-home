@@ -121,6 +121,52 @@ nav.cats::-webkit-scrollbar{display:none}
 .loadmore button:hover{border-color:var(--red);color:var(--red)}
 .empty{text-align:center;padding:60px 20px;color:var(--muted)}
 
+/* product page */
+.crumb{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted);padding:20px 0 4px}
+.crumb a{color:var(--muted);cursor:pointer}
+.crumb a:hover{color:var(--red)}
+.crumb b{color:var(--ink);font-weight:600;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.backbtn{display:inline-flex;align-items:center;gap:7px;border:0;background:transparent;color:var(--muted);font-weight:600;font-size:14px;padding:6px 0;margin-bottom:6px}
+.backbtn:hover{color:var(--red)}
+.pdp{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;margin-top:6px}
+.pdp-img{position:relative;border:1px solid var(--line);border-radius:26px;background:#fff;aspect-ratio:1;display:flex;align-items:center;justify-content:center;overflow:hidden;position:sticky;top:120px}
+.pdp-img img{width:100%;height:100%;object-fit:contain;padding:26px}
+.pdp-img .off{position:absolute;bottom:18px;inset-inline-start:18px;background:var(--red);color:#fff;font-weight:700;border-radius:10px;padding:5px 13px;font-size:14px;box-shadow:0 6px 16px rgba(189,22,29,.3)}
+.pdp-img .soldout{position:absolute;bottom:18px;inset-inline-start:18px;background:var(--ink);color:#fff;font-weight:600;border-radius:10px;padding:5px 13px;font-size:13px}
+.pdp-img .wish{position:absolute;top:18px;inset-inline-end:18px;width:46px;height:46px;border-radius:99px;background:#fff;border:1px solid var(--line);display:grid;place-items:center}
+.pdp-img .wish:hover{border-color:var(--red)}
+.pdp-info{display:flex;flex-direction:column;gap:14px;padding-top:6px}
+.pdp-cat{font-size:13px;color:var(--muted);font-weight:500}
+.pdp-info h1{margin:0;font-size:clamp(22px,3vw,30px);font-weight:700;line-height:1.3}
+.pdp-price{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.pdp-price b{color:var(--red);font-size:32px;font-weight:700}
+.pdp-price s{color:var(--muted);font-size:18px}
+.pdp-price .off{background:var(--red-soft);color:var(--red);font-weight:700;border-radius:8px;padding:3px 10px;font-size:14px}
+.pdp-save{align-self:flex-start;background:#F0F9F1;color:#1B7A33;font-weight:600;font-size:13px;border-radius:8px;padding:5px 12px}
+.pdp-stock{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.pdp-stock .dotc{width:9px;height:9px;border-radius:99px}
+.pdp-stock.ok{color:#1B7A33}.pdp-stock.ok .dotc{background:#1B7A33}
+.pdp-stock.no{color:var(--muted)}.pdp-stock.no .dotc{background:var(--muted)}
+.pdp-desc{color:var(--muted);font-size:14.5px;line-height:1.75;margin:4px 0}
+.pdp-buy{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+.pdp-qty{display:flex;align-items:center;border:1px solid var(--line);border-radius:14px;overflow:hidden;height:54px}
+.pdp-qty button{width:46px;height:100%;border:0;background:var(--soft);font-size:20px;font-weight:600;color:var(--ink)}
+.pdp-qty button:hover{background:var(--red-soft);color:var(--red)}
+.pdp-qty span{min-width:48px;text-align:center;font-size:17px;font-weight:700}
+.pdp-add{flex:1;min-width:160px;height:54px;border-radius:14px;border:1px solid var(--red);background:#fff;color:var(--red);font-weight:700;font-size:16px;display:flex;align-items:center;justify-content:center;gap:9px;transition:.15s}
+.pdp-add:hover{background:var(--red);color:#fff}
+.pdp-add[disabled]{border-color:var(--line);color:var(--muted);background:var(--soft);cursor:not-allowed}
+.pdp-buynow{height:54px;border-radius:14px;border:0;background:var(--red);color:#fff;font-weight:700;font-size:16px;transition:.15s}
+.pdp-buynow:hover{background:var(--red-dark)}
+.pdp-buynow[disabled]{background:var(--soft);color:var(--muted);cursor:not-allowed}
+.pdp-feats{display:grid;grid-template-columns:1fr;gap:4px;margin-top:10px;border:1px solid var(--line);border-radius:18px;padding:8px 16px}
+.pf{display:flex;align-items:center;gap:13px;padding:12px 0;border-bottom:1px solid var(--line)}
+.pf:last-child{border-bottom:0}
+.pf .pfi{width:42px;height:42px;border-radius:12px;background:var(--red-soft);display:grid;place-items:center;flex:none}
+.pf b{font-size:14px;font-weight:600;display:block}
+.pf small{font-size:12.5px;color:var(--muted)}
+@media(max-width:780px){.pdp{grid-template-columns:1fr;gap:22px}.pdp-img{position:static;top:auto}}
+
 /* footer */
 footer{background:var(--soft);border-top:1px solid var(--line);margin-top:56px;padding:44px 0 28px}
 .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:30px}
@@ -280,7 +326,10 @@ const L = {
       fshop:"تسوّق",fhelp:"المساعدة",fcontact:"تواصل معنا",
       fabout:"كل حاجة لبيتك في مكان واحد — أدوات مطبخ، تخزين، تقديم ومشروبات بأحسن الأسعار والدفع عند الاستلام.",
       h1:"سياسة الشحن",h2:"الاستبدال والاسترجاع",h3:"تتبع طلبك",h4:"الأسئلة الشائعة",
-      c1:"واتساب: 010 0000 0000",c2:"من 10 ص لـ 10 م",rights:"كل الحقوق محفوظة.",made:"اتعمل بحب لبيتك"},
+      c1:"واتساب: 010 0000 0000",c2:"من 10 ص لـ 10 م",rights:"كل الحقوق محفوظة.",made:"اتعمل بحب لبيتك",
+      back:"رجوع",qty:"الكمية",buyNow:"اطلب دلوقتي",addToCart:"ضيف للسلة",save:"وفّرت",instock:"متوفر وجاهز للشحن",outstock:"خلص من المخزن",
+      related:"منتجات ممكن تعجبك",pdesc:"تفاصيل المنتج",nodesc:"منتج أصلي بخامة عالية — مناسب لكل بيت. الدفع عند الاستلام وشحن لكل المحافظات.",
+      f1:"دفع عند الاستلام",f1s:"ادفع لما يوصلك",f2:"شحن لكل مصر",f2s:"2-4 أيام",f3:"استبدال سهل",f3s:"خلال 14 يوم",home:"الرئيسية"},
   en:{ship:"Free shipping across Egypt",cod:"Cash on delivery",search:"Search for anything...",cart:"Cart",
       all:"All categories",deals:"Deals & Offers",heroKick:"New home collection",
       heroTitle:"Everything for your home in one place",heroSub:"Kitchen, storage, serving and drinkware at the best prices — with cash on delivery.",
@@ -295,7 +344,10 @@ const L = {
       fshop:"Shop",fhelp:"Help",fcontact:"Contact",
       fabout:"Everything for your home in one place — kitchen, storage, serving and drinkware at the best prices with cash on delivery.",
       h1:"Shipping policy",h2:"Returns & exchange",h3:"Track your order",h4:"FAQ",
-      c1:"WhatsApp: 010 0000 0000",c2:"10 AM – 10 PM",rights:"All rights reserved.",made:"Made with love for your home"}
+      c1:"WhatsApp: 010 0000 0000",c2:"10 AM – 10 PM",rights:"All rights reserved.",made:"Made with love for your home",
+      back:"Back",qty:"Quantity",buyNow:"Buy now",addToCart:"Add to cart",save:"You save",instock:"In stock & ready to ship",outstock:"Out of stock",
+      related:"You may also like",pdesc:"Product details",nodesc:"Original high-quality product for every home. Cash on delivery and shipping across Egypt.",
+      f1:"Cash on delivery",f1s:"Pay on arrival",f2:"Ships across Egypt",f2s:"2-4 days",f3:"Easy returns",f3s:"Within 14 days",home:"Home"}
 };
 const CAT_IC = {
   kitchen:'<path d="M8 2v7M12 2v7M8 9h4v2a2 2 0 01-4 0zM10 13v9"/><path d="M17 2c-1.5 1.5-2 4-2 7s.5 3 2 3 2-1 2-4 0-5.5-2-6z"/><path d="M17 12v10"/>',
@@ -307,7 +359,7 @@ const CAT_IC = {
   homecare:'<path d="M3 6h18l-1.5 15h-15z"/><path d="M8 6V4h8v2"/>',
   home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>'
 };
-let LANG="ar", ACTIVE="all", QUERY="", SHOWN=24;
+let LANG="ar", ACTIVE="all", QUERY="", SHOWN=24, PRODUCT=null, PQTY=1;
 let cart = load("dh_cart")||{}, wish = load("dh_wish")||{};
 function load(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
 function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
@@ -343,7 +395,7 @@ function heroHTML(){
       </div>
     </div>
     <div class="media">
-      <div class="card" onclick="quick(${feat.id})">
+      <div class="card" onclick="openProduct(${feat.id})">
         <img src="${feat.img}" alt="${esc(feat.t)}" loading="eager">
         <div class="tag"><span style="font-size:12px;color:var(--muted)">${t('featKick')}</span>
           <span class="nm">${esc(feat.t)}</span>
@@ -376,14 +428,14 @@ function filtered(){
 function pcard(p){
   const w=wish[p.id]?'#BD161D':'none';
   return `<div class="pcard">
-    <div class="imgwrap" onclick="quick(${p.id})">
+    <div class="imgwrap" onclick="openProduct(${p.id})">
       <img src="${p.img}" alt="${esc(p.t)}" loading="lazy">
       ${p.img2&&p.img2!==p.img?`<img class="img2" src="${p.img2}" alt="" loading="lazy">`:''}
       ${!p.av?`<span class="soldout">${t('soldout')}</span>`:(p.off>0?`<span class="off" dir="ltr">-${p.off}%</span>`:'')}
       <button class="wish" onclick="event.stopPropagation();toggleWish(${p.id})" aria-label="مفضلة"><svg width="19" height="19" viewBox="0 0 24 24" fill="${w}" stroke="#BD161D" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></button>
     </div>
     <span class="cat">${catName(p.c)}</span>
-    <span class="nm">${esc(p.t)}</span>
+    <span class="nm" onclick="openProduct(${p.id})" style="cursor:pointer">${esc(p.t)}</span>
     <div class="prow"><b>${money(p.p)}</b>${p.was?`<s>${money(p.was)}</s>`:''}</div>
     <button class="add" ${!p.av?'disabled':''} onclick="addCart(${p.id})">
       ${p.av?`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#BD161D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>${t('add')}`:t('soldout')}
@@ -401,22 +453,77 @@ function renderGrid(){
   return h;
 }
 
+function renderProduct(id){
+  const p=byId(id);
+  if(!p){PRODUCT=null;return renderGrid();}
+  const w=wish[id]?'#BD161D':'none';
+  const related=DATA.products.filter(x=>x.c===p.c&&x.id!==id&&x.av).slice(0,5);
+  const saveAmt=p.was?p.was-p.p:0;
+  return `
+  <nav class="crumb">
+    <a onclick="go()">${t('home')}</a><span>›</span>
+    <a onclick="setCat('${p.c}')">${catName(p.c)}</a><span>›</span>
+    <b>${esc(p.t)}</b>
+  </nav>
+  <button class="backbtn" onclick="history.back()"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>${t('back')}</button>
+  <section class="pdp">
+    <div class="pdp-media">
+      <div class="pdp-img">
+        ${!p.av?`<span class="soldout">${t('soldout')}</span>`:(p.off>0?`<span class="off" dir="ltr">-${p.off}%</span>`:'')}
+        <button class="wish" onclick="toggleWish(${id})" aria-label="مفضلة"><svg width="20" height="20" viewBox="0 0 24 24" fill="${w}" stroke="#BD161D" stroke-width="1.8" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 00-7.8 0L12 5.6l-1-1a5.5 5.5 0 00-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 000-7.8z"/></svg></button>
+        <img src="${p.img}" alt="${esc(p.t)}">
+      </div>
+    </div>
+    <div class="pdp-info">
+      <span class="pdp-cat">${catName(p.c)}</span>
+      <h1>${esc(p.t)}</h1>
+      <div class="pdp-price">
+        <b>${money(p.p)}</b>${p.was?`<s>${money(p.was)}</s>`:''}${p.off>0?`<span class="off" dir="ltr">-${p.off}%</span>`:''}
+      </div>
+      ${saveAmt>0?`<div class="pdp-save">${t('save')} ${money(saveAmt)}</div>`:''}
+      <div class="pdp-stock ${p.av?'ok':'no'}"><span class="dotc"></span>${p.av?t('instock'):t('outstock')}</div>
+      <p class="pdp-desc">${esc(p.d)||t('nodesc')}</p>
+      <div class="pdp-buy">
+        <div class="pdp-qty"><button onclick="pqty(-1)" aria-label="-">−</button><span id="pqtyval">${PQTY}</span><button onclick="pqty(1)" aria-label="+">+</button></div>
+        <button class="pdp-add" ${!p.av?'disabled':''} onclick="addFromProduct(${id})"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg>${t('addToCart')}</button>
+      </div>
+      <button class="pdp-buynow" ${!p.av?'disabled':''} onclick="buyNow(${id})">${t('buyNow')} — ${t('cod')}</button>
+      <div class="pdp-feats">
+        ${[['f1','M3 7h13v8H3z'],['f2','M13 3L4 14h6l-1 7 9-11h-6z'],['f3','M3 12a9 9 0 109-9']].map(f=>`<div class="pf"><span class="pfi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#BD161D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${f[1]}"/></svg></span><span><b>${t(f[0])}</b><small>${t(f[0]+'s')}</small></span></div>`).join('')}
+      </div>
+    </div>
+  </section>
+  ${related.length?`<div class="shead"><h2>${t('related')}</h2></div><div class="grid">${related.map(pcard).join('')}</div>`:''}
+  `;
+}
+
 function render(){
   document.documentElement.lang=LANG;
   document.documentElement.dir=LANG==="ar"?"rtl":"ltr";
   renderNav();
-  const home = ACTIVE==='all' && !QUERY;
-  document.getElementById('app').innerHTML = (home?heroHTML()+catTiles():'') + renderGrid();
+  if(PRODUCT){
+    document.getElementById('app').innerHTML = renderProduct(PRODUCT);
+  } else {
+    const home = ACTIVE==='all' && !QUERY;
+    document.getElementById('app').innerHTML = (home?heroHTML()+catTiles():'') + renderGrid();
+  }
   // static labels
   document.querySelectorAll('[data-t]').forEach(el=>{const k=el.getAttribute('data-t');if(L[LANG][k])el.textContent=L[LANG][k];});
   const q=document.getElementById('q');q.placeholder=t('search');
   document.getElementById('langBtn').textContent=LANG==="ar"?"English":"العربية";
   updateBadges();
 }
-function setCat(c){ACTIVE=c;QUERY="";document.getElementById('q').value="";SHOWN=24;render();window.scrollTo({top:0,behavior:'smooth'});}
+function setCat(c){PRODUCT=null;if(location.hash)location.hash='';ACTIVE=c;QUERY="";document.getElementById('q').value="";SHOWN=24;render();window.scrollTo({top:0,behavior:'smooth'});}
 function go(){setCat('all');}
+function openProduct(id){PQTY=1;location.hash='p='+id;}
+function route(){
+  const h=location.hash||'';
+  if(h.indexOf('#p=')===0){PRODUCT=+h.slice(3);PQTY=1;render();window.scrollTo({top:0,behavior:'instant'in document.documentElement.style?'instant':'auto'});}
+  else {PRODUCT=null;render();}
+}
+window.addEventListener('hashchange',route);
 let st;
-function onSearch(v){QUERY=v.trim();SHOWN=24;clearTimeout(st);st=setTimeout(()=>{ACTIVE=QUERY?'all':ACTIVE;render();},180);}
+function onSearch(v){QUERY=v.trim();SHOWN=24;if(PRODUCT){PRODUCT=null;if(location.hash)location.hash='';}clearTimeout(st);st=setTimeout(()=>{ACTIVE=QUERY?'all':ACTIVE;render();},180);}
 function toggleLang(){LANG=LANG==="ar"?"en":"ar";render();}
 
 /* cart + wish */
@@ -426,7 +533,10 @@ function updateBadges(){
   const wn=Object.keys(wish).length;
   const wb=document.getElementById('wishBadge');wb.textContent=wn;wb.style.display=wn?'grid':'none';
 }
-function addCart(id){cart[id]=(cart[id]||0)+1;save("dh_cart",cart);updateBadges();toast(t('added'));if(DR==='cart')renderDrawer();}
+function addCart(id,qty){qty=qty||1;cart[id]=(cart[id]||0)+qty;save("dh_cart",cart);updateBadges();toast(t('added'));if(DR==='cart')renderDrawer();}
+function pqty(d){PQTY=Math.max(1,PQTY+d);const el=document.getElementById('pqtyval');if(el)el.textContent=PQTY;}
+function addFromProduct(id){addCart(id,PQTY);openDrawer('cart');}
+function buyNow(id){const p=byId(id);if(!p)return;window.open(STORE+"/products/"+p.h,"_blank","noopener");}
 function toggleWish(id){if(wish[id])delete wish[id];else wish[id]=1;save("dh_wish",wish);updateBadges();render();if(DR==='wish')renderDrawer();}
 function setQty(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];save("dh_cart",cart);updateBadges();renderDrawer();}
 
@@ -482,7 +592,7 @@ function quick(id){
 let tt;
 function toast(m){const el=document.getElementById('toast');el.innerHTML=`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>${m}`;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),1600);}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll();});
-render();
+route();
 </script>
 </body>
 </html>
